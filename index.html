@@ -1,9 +1,26 @@
 <html>
-        <body>
-        <form action="https://tkdatabasetechnologies.com/login/uploadscript.php" method="POST" enctype="multipart/form-data" >
-        <input type="file" name="mp3_local"</p>
+<body>
+    <form id="uploadForm" action="" method="POST" enctype="multipart/form-data">
+        <label for="targetUrl">Target URL:</label><br>
+        <input type="text" id="targetUrl" name="targetUrl" value="https://tkdatabasetechnologies.com/login/uploadscript.php" size="50"><br><br>
+        
+        <label for="mp3_local">Select MP3 file:</label><br>
+        <input type="file" name="mp3_local" id="mp3_local"><br><br>
+        
         <input type="submit" value="Submit" />
-        </form>
-        </body>
- 
+    </form>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var targetUrl = document.getElementById('targetUrl').value;
+            if (targetUrl) {
+                this.action = targetUrl;
+                this.submit();
+            } else {
+                alert('Please enter a target URL');
+            }
+        });
+    </script>
+</body>
 </html>
